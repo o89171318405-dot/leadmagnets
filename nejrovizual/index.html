@@ -969,6 +969,89 @@ html.has-js .reveal.visible { opacity: 1; transform: translateY(0); }
   .services-grid { grid-template-columns: 1fr; }
 }
 
+/* ── финальный CTA-блок ── */
+.final-cta {
+  margin: 40px 0 24px;
+  padding: 36px 40px 32px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  position: relative;
+}
+.final-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 8px 0 14px;
+}
+.final-cta h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.2;
+  margin: 8px 0 12px;
+}
+.final-cta p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--brown2);
+  margin: 0 0 20px;
+}
+.cta-primary, .cta-secondary {
+  display: block;
+  width: 100%;
+  padding: 18px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.3s ease, letter-spacing 0.3s ease, color 0.3s ease;
+}
+.cta-primary {
+  background: var(--brown);
+  color: var(--paper);
+  border: none;
+}
+.cta-primary:hover {
+  background: var(--gold-d);
+  letter-spacing: 0.26em;
+}
+.cta-secondary {
+  background: transparent;
+  color: var(--brown);
+  border: 1.5px solid var(--brown);
+}
+.cta-secondary:hover {
+  background: var(--brown);
+  color: var(--paper);
+  letter-spacing: 0.26em;
+}
+.cta-divider {
+  text-align: center;
+  color: var(--gold);
+  font-size: 18px;
+  margin: 28px 0 20px;
+  letter-spacing: 0.5em;
+}
+@media (max-width: 700px) {
+  .final-cta {
+    padding: 26px 22px 24px;
+  }
+  .final-cta h2 { font-size: 26px; }
+  .final-cta h3 { font-size: 22px; }
+  .cta-primary, .cta-secondary { padding: 16px 18px; font-size: 12px; letter-spacing: 0.18em; }
+}
+
 </style>
 </head>
 <body>
@@ -1289,9 +1372,17 @@ html.has-js .reveal.visible { opacity: 1; transform: translateY(0); }
   </div>
 
 
-  <div class="final-note reveal">
-    <div class="final-note-mark">✦</div>
-    <div class="final-note-text">Пять фраз — и лицо перестаёт быть куклой. Пять промптов — и у тебя своя летняя фотосессия, снятая нейросетью.</div>
+  <div class="final-cta reveal">
+    <div class="section-label">Что дальше</div>
+    <h2>Лицо ты починил. Теперь — руки, свет, поза и серия кадров в одном стиле</h2>
+    <p>Это уже маршрут «Нейрофотосессия» в моём мини-курсе «Нейровизуал». Пять образов, снятых нейросетью в одной стилистике — как фотосессия у профи, только не выходя из дома.</p>
+    <a class="cta-primary" href="https://neurovizual.netlify.app" target="_blank" rel="noopener">Смотреть программу «Нейровизуал»</a>
+
+    <div class="cta-divider">✦</div>
+
+    <h3>Пришли мне свой результат</h3>
+    <p>Сделала по этому гайду — кинь мне свой портрет в личку. Посмотрю и скажу, что подкрутить, чтобы стало ещё живее.</p>
+    <a class="cta-secondary" href="https://t.me/PimenovaOR" target="_blank" rel="noopener">Написать Оле в Telegram</a>
   </div>
 
   <div class="footer reveal">
