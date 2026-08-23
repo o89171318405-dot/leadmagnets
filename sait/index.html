@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сайт руками ИИ — гайд из 4 шагов</title>
+<meta name="description" content="Как собрать профессиональный сайт с плавными анимациями через Claude Code, Framer Motion и 21st.dev. Пошаговый гайд без навыков дизайна и программирования.">
+<meta property="og:title" content="Сайт руками ИИ — гайд из 4 шагов">
+<meta property="og:description" content="4 команды в терминале и готовый сайт с анимациями. Без дизайна и кода.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Marck+Script&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #F5EEE1;
+  --bg-warm:  #EDE3D0;
+  --paper:    #FBF6EC;
+  --card:     #FFFBF2;
+  --accent:   #B08838;
+  --accent-l: #D4AB59;
+  --accent-d: #8B6A22;
+  --brown:    #3E2A14;
+  --brown2:   #5C3D1E;
+  --ink:      #241708;
+  --muted:    #8B7355;
+  --line:     rgba(62,42,20,0.14);
+  --line-a:   rgba(176,136,56,0.28);
+  --term-bg:  #1E1710;
+  --term-fg:  #F5EEE1;
+  --term-accent: #D4AB59;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(212,171,89,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 85% 80%, rgba(92,61,30,0.10) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.08 0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.45; mix-blend-mode: multiply; pointer-events: none; z-index: 0;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 28px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* MASTHEAD */
+.masthead {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 20px; margin-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--muted);
+}
+.masthead-issue { display: flex; align-items: center; gap: 10px; }
+.masthead-issue::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+
+/* AUTHOR */
+.author { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin-bottom: 60px; }
+.author-photo {
+  width: 200px; height: 264px; object-fit: cover; object-position: center;
+  border-radius: 3px; filter: contrast(1.05) saturate(0.95);
+  box-shadow:
+    0 1px 0 rgba(212,171,89,0.4),
+    -14px 14px 0 -2px rgba(176,136,56,0.20),
+    0 22px 46px rgba(62,42,20,0.22);
+}
+.author-meta { display: flex; flex-direction: column; gap: 8px; }
+.author-kicker {
+  font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-d);
+  display: flex; align-items: center; gap: 10px;
+}
+.author-kicker::after { content: ''; flex: 1; height: 1px; background: var(--line-a); max-width: 60px; }
+.author-name {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-style: italic;
+  font-size: 34px; line-height: 1.1; color: var(--brown);
+}
+.author-role {
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+
+/* KICKER LINE */
+.kicker-line {
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  margin: 40px auto 28px;
+}
+.kicker-line::before, .kicker-line::after {
+  content: ''; height: 1px; background: var(--line-a); flex: 1; max-width: 90px;
+}
+.kicker-line-text {
+  font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--accent-d); text-align: center;
+}
+
+/* HERO */
+.title-block { margin-bottom: 44px; }
+h1.h1 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: clamp(38px, 6vw, 56px); line-height: 1.05;
+  color: var(--brown); margin-bottom: 22px;
+}
+h1.h1 em { font-style: italic; color: var(--accent-d); }
+.lead {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 21px; line-height: 1.55; color: var(--brown2);
+  font-style: italic;
+}
+
+.ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 48px auto; }
+.ornament::before, .ornament::after { content: ''; width: 60px; height: 1px; background: var(--line-a); }
+.ornament-mark { color: var(--accent); font-size: 18px; }
+
+/* SECTIONS */
+section.prose { margin-bottom: 48px; }
+.section-label {
+  font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--accent-d); margin-bottom: 14px;
+}
+h2.section-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: clamp(26px, 4vw, 36px); line-height: 1.2;
+  color: var(--brown); margin-bottom: 18px;
+}
+h2.section-title .accent { color: var(--accent-d); font-style: italic; }
+.prose p { margin-bottom: 14px; font-size: 16px; }
+.prose ul { list-style: none; padding: 0; margin: 12px 0 18px; }
+.prose ul li {
+  padding: 8px 0 8px 22px; position: relative; font-size: 16px;
+  color: var(--ink); border-bottom: 1px dashed var(--line);
+}
+.prose ul li:last-child { border-bottom: none; }
+.prose ul li::before {
+  content: '—'; position: absolute; left: 0; color: var(--accent);
+  font-weight: 600;
+}
+
+/* STEP CARD */
+.step {
+  background: var(--paper);
+  border: 1px solid var(--line-a);
+  border-radius: 4px;
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 14px 32px rgba(62,42,20,0.07);
+  position: relative;
+}
+.step-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 14px;
+}
+.step-num {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600;
+  font-size: 34px; line-height: 1;
+  color: var(--accent);
+  min-width: 34px;
+}
+.step-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: 22px; line-height: 1.2; color: var(--brown);
+}
+.step p { font-size: 15px; color: var(--ink); margin-bottom: 12px; }
+.step ol { counter-reset: item; padding-left: 0; margin: 12px 0; }
+.step ol > li {
+  list-style: none; counter-increment: item;
+  padding: 6px 0 6px 24px; position: relative; font-size: 15px;
+}
+.step ol > li::before {
+  content: counter(item) ".";
+  position: absolute; left: 0; top: 6px;
+  color: var(--accent-d); font-weight: 600;
+}
+.step a {
+  color: var(--accent-d); text-decoration: none;
+  border-bottom: 1px solid var(--line-a);
+  transition: border-color 0.2s;
+}
+.step a:hover { border-bottom-color: var(--accent-d); }
+
+/* TERMINAL BLOCK */
+.terminal {
+  background: var(--term-bg);
+  color: var(--term-fg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 12px 0 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+}
+.terminal-head {
+  background: rgba(255,255,255,0.05);
+  padding: 8px 14px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--term-accent);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; gap: 8px;
+}
+.terminal-head::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #d05a3f;
+  box-shadow: 12px 0 0 #e0a832, 24px 0 0 #5ec26c;
+  margin-right: 26px;
+}
+.terminal pre {
+  padding: 16px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; line-height: 1.6;
+  white-space: pre-wrap; word-wrap: break-word;
+  color: var(--term-fg);
+}
+.terminal pre .prompt { color: var(--term-accent); }
+
+/* TIP */
+.tip {
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 10px 0 4px;
+  font-size: 14px;
+  color: var(--brown2);
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+.tip::before {
+  content: 'СОВЕТ · ';
+  font-weight: 700; font-style: normal;
+  letter-spacing: 0.18em; color: var(--accent-d);
+  font-size: 10px;
+}
+
+/* SUMMARY */
+.summary {
+  background: var(--bg-warm);
+  border-radius: 4px;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  margin: 20px 0;
+}
+.summary-row {
+  display: grid; grid-template-columns: 32px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+  align-items: baseline;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-num {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600;
+  font-size: 22px; color: var(--accent-d); line-height: 1;
+}
+.summary-content { font-size: 14.5px; }
+.summary-content b { display: block; margin-bottom: 4px; color: var(--brown); }
+.summary-content code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  background: var(--card);
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: var(--brown);
+  border: 1px solid var(--line-a);
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.cta-channel {
+  background: var(--bg-warm);
+  padding: 34px 28px; margin-top: 60px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+.cta-channel .kicker {
+  font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--accent-d); margin-bottom: 14px;
+}
+.cta-channel h3 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: 28px; line-height: 1.2; color: var(--brown); margin-bottom: 8px;
+}
+.cta-channel p { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--brown); color: #F5EEE1;
+  padding: 14px 28px; text-decoration: none;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border-radius: 3px; transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(62,42,20,0.25);
+}
+.cta-btn:hover { background: var(--accent-d); transform: translateY(-1px); }
+
+.footer {
+  margin-top: 60px; padding-top: 24px;
+  border-top: 1px solid var(--line);
+  text-align: center; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-credit {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: none;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 40px 18px 80px; }
+  .author { gap: 20px; }
+  .author-photo { width: 130px; height: 170px; }
+  .author-name { font-size: 26px; }
+  .author-role { font-size: 12px; }
+  .author-kicker { font-size: 9px; letter-spacing: 0.24em; }
+  .author-kicker::after { max-width: 30px; }
+  .kicker-line-text { font-size: 10px; letter-spacing: 0.26em; }
+  .kicker-line::before, .kicker-line::after { max-width: 50px; }
+  .step { padding: 22px 20px; }
+  .step-num { font-size: 28px; }
+  .step-title { font-size: 19px; }
+  .terminal pre { font-size: 12px; padding: 14px 14px; }
+}
+@media (max-width: 400px) {
+  .author-photo { width: 110px; height: 145px; }
+  .author-name { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="masthead">
+    <div class="masthead-issue">Бизнес в AI · Выпуск N° 07</div>
+    <div>2026</div>
+  </div>
+
+  <div class="author">
+    <img class="author-photo" src="olya-work-suit.jpg" alt="Ольга Пименова">
+    <div class="author-meta">
+      <div class="author-kicker">Автор выпуска</div>
+      <div class="author-name">Ольга Пименова</div>
+      <div class="author-role">маркетолог · эксперт по ИИ · автор канала «Бизнес в AI»</div>
+    </div>
+  </div>
+
+  <div class="kicker-line"><div class="kicker-line-text">Гайд по сборке сайтов с ИИ</div></div>
+
+  <div class="title-block">
+    <h1 class="h1">Собери <em>профессиональный сайт</em> руками ИИ — за 5 минут</h1>
+    <p class="lead">Четыре простых шага. Ни строчки кода вручную, ни навыков дизайна. На выходе — сайт с плавными анимациями и премиум-компонентами, который выглядит как работа агентства.</p>
+  </div>
+
+  <div class="ornament"><div class="ornament-mark">✦</div></div>
+
+  <section class="prose">
+    <div class="section-label">Что понадобится</div>
+    <h2 class="section-title">Всего <span class="accent">три вещи</span></h2>
+    <ul>
+      <li>Компьютер с доступом к Терминалу — Mac, Windows или Linux</li>
+      <li>Интернет — чтобы поставить пакеты</li>
+      <li>5 минут времени — вот и всё</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Что получишь</div>
+    <h2 class="section-title">Готовый сайт — <span class="accent">не шаблон</span></h2>
+    <ul>
+      <li>Профессиональный сайт с плавными анимациями</li>
+      <li>Готовые UI-компоненты от 21st.dev</li>
+      <li>Переходы на базе Framer Motion</li>
+      <li>Чистый современный дизайн — никаких шаблонов</li>
+      <li>Полное владение кодом — можно хостить где угодно</li>
+    </ul>
+    <p><i>Общее время настройки: около 5 минут.</i></p>
+  </section>
+
+  <div class="ornament"><div class="ornament-mark">✦</div></div>
+
+  <section class="prose">
+    <div class="section-label">Пошагово</div>
+    <h2 class="section-title">Четыре шага</h2>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1</div>
+        <div class="step-title">Установи Claude Code</div>
+      </div>
+      <p>Claude Code — это ИИ-агент от Anthropic, который работает прямо в твоём терминале.</p>
+      <ol>
+        <li>Перейди на <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">docs.anthropic.com/en/docs/claude-code</a></li>
+        <li>Скопируй команду установки и вставь её в терминал:</li>
+      </ol>
+      <div class="terminal">
+        <div class="terminal-head">Terminal</div>
+        <pre><span class="prompt">$</span> npm install -g @anthropic-ai/claude-code</pre>
+      </div>
+      <div class="tip">Сначала убедись, что установлен Node.js. Если нет — скачай с nodejs.org.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2</div>
+        <div class="step-title">Установи Framer Motion</div>
+      </div>
+      <p>Этот пакет отвечает за все плавные анимации на сайте.</p>
+      <ol>
+        <li>Перейди в документацию <a href="https://motion.dev/docs/react-quick-start" target="_blank">motion.dev/docs/react-quick-start</a></li>
+        <li>Скопируй команду и вставь в терминал:</li>
+      </ol>
+      <div class="terminal">
+        <div class="terminal-head">Terminal</div>
+        <pre><span class="prompt">$</span> npm install framer-motion</pre>
+      </div>
+      <div class="tip">Запусти команду внутри папки проекта, чтобы пакет установился в нужное место.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3</div>
+        <div class="step-title">Установи навык UI UX Pro Max</div>
+      </div>
+      <p>Этот навык прокачивает Claude Code для создания впечатляющих сайтов.</p>
+      <ol>
+        <li>Скачай файл навыка UI UX Pro Max</li>
+        <li>Открой Claude Code в терминале и напиши:</li>
+      </ol>
+      <div class="terminal">
+        <div class="terminal-head">Claude Code</div>
+        <pre><span class="prompt">&gt;</span> Установи навык UI UX Pro Max</pre>
+      </div>
+      <p>Claude Code сделает остальное сам.</p>
+      <div class="tip">Навык обучает Claude Code профессиональным паттернам дизайна и лучшим практикам.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4</div>
+        <div class="step-title">Добавь компоненты 21st.dev</div>
+      </div>
+      <p>Премиум UI-компоненты, которые делают сайт похожим на работу дизайн-агентства.</p>
+      <ol>
+        <li>Перейди на <a href="https://21st.dev" target="_blank">21st.dev</a></li>
+        <li>Скопируй строку интеграции с их сайта</li>
+        <li>Вставь её в Claude Code и наблюдай за магией:</li>
+      </ol>
+      <div class="terminal">
+        <div class="terminal-head">Claude Code</div>
+        <pre><span class="prompt">&gt;</span> [вставь строку интеграции с 21st.dev]</pre>
+      </div>
+    </div>
+
+    <p style="margin-top: 20px;"><b style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--accent-d); font-style:italic;">Готово. Твой профессиональный сайт собран.</b></p>
+  </section>
+
+  <div class="ornament"><div class="ornament-mark">✦</div></div>
+
+  <section class="prose">
+    <div class="section-label">Одним взглядом</div>
+    <h2 class="section-title">Краткий справочник</h2>
+    <div class="summary">
+      <div class="summary-row">
+        <div class="summary-num">1</div>
+        <div class="summary-content">
+          <b>Установи Claude Code</b>
+          <code>npm install -g @anthropic-ai/claude-code</code><br>
+          <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" style="color:var(--accent-d); font-size:12.5px;">docs.anthropic.com/en/docs/claude-code</a>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-num">2</div>
+        <div class="summary-content">
+          <b>Установи Framer Motion</b>
+          <code>npm install framer-motion</code><br>
+          <a href="https://motion.dev/docs/react-quick-start" target="_blank" style="color:var(--accent-d); font-size:12.5px;">motion.dev/docs/react-quick-start</a>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-num">3</div>
+        <div class="summary-content">
+          <b>Добавь навык UI UX Pro Max</b>
+          Скажи Claude Code установить его · скачай файл навыка
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-num">4</div>
+        <div class="summary-content">
+          <b>Добавь компоненты 21st.dev</b>
+          Вставь строку установки в Claude Code<br>
+          <a href="https://21st.dev" target="_blank" style="color:var(--accent-d); font-size:12.5px;">21st.dev</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Что важно помнить</div>
+    <h2 class="section-title">Это <span class="accent">старт</span>, а не конечная точка</h2>
+    <p>После установки у тебя будет рабочий скелет сайта. Дальше нужно наполнять содержимым, ставить свои цвета и шрифты, придумывать структуру. ИИ помогает с технической частью — стратегию и смысл ты придумываешь сам.</p>
+    <p>Если что-то на первом шаге не заводится — обычно дело в Node.js. Установи с nodejs.org (LTS-версию), перезапусти терминал и повтори.</p>
+  </section>
+
+  <div class="cta-channel">
+    <div class="kicker">Больше практики с ИИ</div>
+    <h3>Каждый день — новый инструмент</h3>
+    <p>В моём канале — промпты и гайды, которые реально работают.<br>Без «нейросети изменят мир», без воды.</p>
+    <a class="cta-btn" href="https://t.me/BiznesvAi" target="_blank">Открыть @BiznesvAi</a>
+  </div>
+
+  <div class="footer">
+    © Ольга Пименова · @BiznesvAi
+  </div>
+
+</div>
+
+</body>
+</html>
