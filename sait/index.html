@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Сайт руками ИИ — гайд из 4 шагов</title>
-<meta name="description" content="Как собрать профессиональный сайт с плавными анимациями через Claude Code, Framer Motion и 21st.dev. Пошаговый гайд без навыков дизайна и программирования.">
-<meta property="og:title" content="Сайт руками ИИ — гайд из 4 шагов">
-<meta property="og:description" content="4 команды в терминале и готовый сайт с анимациями. Без дизайна и кода.">
+<title>Сайт руками ИИ — расширенный гайд</title>
+<meta name="description" content="Как собрать сайт с ИИ: от структуры и дизайн-системы до проверки интерфейса и аккуратных анимаций. Claude Code, Skills, Refero, Impeccable и 21st.dev.">
+<meta property="og:title" content="Сайт руками ИИ — расширенный гайд">
+<meta property="og:description" content="Проверенный маршрут: структура, DESIGN.md, сборка, аудит и анимации.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Marck+Script&display=swap" rel="stylesheet">
@@ -374,151 +374,266 @@ h2.section-title .accent { color: var(--accent-d); font-style: italic; }
     </div>
   </div>
 
-  <div class="kicker-line"><div class="kicker-line-text">Гайд по сборке сайтов с ИИ</div></div>
+  <div class="kicker-line"><div class="kicker-line-text">Расширенный гайд по сайтам с ИИ</div></div>
 
   <div class="title-block">
-    <h1 class="h1">Собери <em>профессиональный сайт</em> руками ИИ — за 5 минут</h1>
-    <p class="lead">Четыре простых шага. Ни строчки кода вручную, ни навыков дизайна. На выходе — сайт с плавными анимациями и премиум-компонентами, который выглядит как работа агентства.</p>
+    <h1 class="h1">Собери <em>продуманный сайт</em> руками ИИ</h1>
+    <p class="lead">От брифа и визуального направления до чистого интерфейса, адаптивности и аккуратных анимаций. Внутри — инструменты, команды и правильный порядок работы.</p>
   </div>
 
   <div class="ornament"><div class="ornament-mark">✦</div></div>
 
   <section class="prose">
     <div class="section-label">Что понадобится</div>
-    <h2 class="section-title">Всего <span class="accent">три вещи</span></h2>
+    <h2 class="section-title">Рабочая <span class="accent">основа</span></h2>
     <ul>
-      <li>Компьютер с доступом к Терминалу — Mac, Windows или Linux</li>
-      <li>Интернет — чтобы поставить пакеты</li>
-      <li>5 минут времени — вот и всё</li>
+      <li>Компьютер с Терминалом: Windows, macOS или Linux</li>
+      <li>Claude Code или другой coding-агент, который поддерживает Skills</li>
+      <li>Node.js LTS для установки инструментов через npm и npx</li>
+      <li>Тексты, фотографии, ссылки и задача будущего сайта</li>
     </ul>
   </section>
 
   <section class="prose">
-    <div class="section-label">Что получишь</div>
-    <h2 class="section-title">Готовый сайт — <span class="accent">не шаблон</span></h2>
+    <div class="section-label">Что получится</div>
+    <h2 class="section-title">Сайт с <span class="accent">едиными правилами</span></h2>
     <ul>
-      <li>Профессиональный сайт с плавными анимациями</li>
-      <li>Готовые UI-компоненты от 21st.dev</li>
-      <li>Переходы на базе Framer Motion</li>
-      <li>Чистый современный дизайн — никаких шаблонов</li>
-      <li>Полное владение кодом — можно хостить где угодно</li>
+      <li>Логичная структура страницы под конкретную аудиторию и действие</li>
+      <li>DESIGN.md с цветами, шрифтами, сеткой, отступами и компонентами</li>
+      <li>Интерфейс, проверенный по композиции, адаптивности и доступности</li>
+      <li>Анимации, которые помогают чтению и навигации</li>
+      <li>Код проекта, который можно дорабатывать и размещать на выбранном хостинге</li>
     </ul>
-    <p><i>Общее время настройки: около 5 минут.</i></p>
+    <p><i>Время зависит от объёма сайта, готовности материалов и количества правок. Установка инструментов занимает несколько минут, а сборка полноценной страницы требует отдельной работы.</i></p>
   </section>
 
   <div class="ornament"><div class="ornament-mark">✦</div></div>
 
   <section class="prose">
-    <div class="section-label">Пошагово</div>
-    <h2 class="section-title">Четыре шага</h2>
+    <div class="section-label">Базовая настройка</div>
+    <h2 class="section-title">Подготовь рабочую среду</h2>
 
     <div class="step">
       <div class="step-head">
         <div class="step-num">1</div>
         <div class="step-title">Установи Claude Code</div>
       </div>
-      <p>Claude Code — это ИИ-агент от Anthropic, который работает прямо в твоём терминале.</p>
+      <p>Claude Code — coding-агент Anthropic: он читает проект, меняет файлы и запускает команды.</p>
       <ol>
-        <li>Перейди на <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">docs.anthropic.com/en/docs/claude-code</a></li>
-        <li>Скопируй команду установки и вставь её в терминал:</li>
+        <li>Открой официальную <a href="https://code.claude.com/docs" target="_blank">документацию Claude Code</a></li>
+        <li>Для Windows открой PowerShell и запусти рекомендованный установщик:</li>
       </ol>
       <div class="terminal">
-        <div class="terminal-head">Terminal</div>
-        <pre><span class="prompt">$</span> npm install -g @anthropic-ai/claude-code</pre>
+        <div class="terminal-head">Windows PowerShell</div>
+        <pre><span class="prompt">PS&gt;</span> irm https://claude.ai/install.ps1 | iex</pre>
       </div>
-      <div class="tip">Сначала убедись, что установлен Node.js. Если нет — скачай с nodejs.org.</div>
+      <div class="tip">На macOS, Linux и WSL используется команда из официальной документации. Установщики меняются, поэтому бери актуальную команду только там.</div>
     </div>
 
     <div class="step">
       <div class="step-head">
         <div class="step-num">2</div>
-        <div class="step-title">Установи Framer Motion</div>
+        <div class="step-title">Создай папку проекта</div>
       </div>
-      <p>Этот пакет отвечает за все плавные анимации на сайте.</p>
+      <p>Все инструкции, DESIGN.md, исходники и установленные навыки должны относиться к одному проекту.</p>
       <ol>
-        <li>Перейди в документацию <a href="https://motion.dev/docs/react-quick-start" target="_blank">motion.dev/docs/react-quick-start</a></li>
-        <li>Скопируй команду и вставь в терминал:</li>
+        <li>Создай отдельную папку и открой её в VS Code</li>
+        <li>Запусти Claude Code из этой папки:</li>
       </ol>
       <div class="terminal">
         <div class="terminal-head">Terminal</div>
-        <pre><span class="prompt">$</span> npm install framer-motion</pre>
+        <pre><span class="prompt">$</span> cd путь-к-проекту
+<span class="prompt">$</span> claude</pre>
       </div>
-      <div class="tip">Запусти команду внутри папки проекта, чтобы пакет установился в нужное место.</div>
+      <div class="tip">Библиотеку анимаций выбирают после определения стека. Для React агент может предложить Motion, а для простого HTML часто хватает CSS.</div>
     </div>
 
     <div class="step">
       <div class="step-head">
         <div class="step-num">3</div>
-        <div class="step-title">Установи навык UI UX Pro Max</div>
+        <div class="step-title">Установи Taste Skill</div>
       </div>
-      <p>Этот навык прокачивает Claude Code для создания впечатляющих сайтов.</p>
+      <p>Навык <code>design-taste-frontend</code> помогает Claude удерживать выбранное визуальное направление, композицию, типографику, плотность и характер движения.</p>
       <ol>
-        <li>Скачай файл навыка UI UX Pro Max</li>
-        <li>Открой Claude Code в терминале и напиши:</li>
+        <li>Открой терминал в корне проекта</li>
+        <li>Запусти официальную команду репозитория:</li>
       </ol>
       <div class="terminal">
-        <div class="terminal-head">Claude Code</div>
-        <pre><span class="prompt">&gt;</span> Установи навык UI UX Pro Max</pre>
+        <div class="terminal-head">Terminal</div>
+        <pre><span class="prompt">$</span> npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"</pre>
       </div>
-      <p>Claude Code сделает остальное сам.</p>
-      <div class="tip">Навык обучает Claude Code профессиональным паттернам дизайна и лучшим практикам.</div>
+      <p><a href="https://github.com/Leonxlnx/taste-skill" target="_blank">Открыть репозиторий Taste Skill</a></p>
+      <div class="tip">Текущая версия основного навыка v2 помечена разработчиком как экспериментальная. Для стабильного старого поведения в репозитории оставлен вариант design-taste-frontend-v1.</div>
     </div>
 
     <div class="step">
       <div class="step-head">
         <div class="step-num">4</div>
-        <div class="step-title">Добавь компоненты 21st.dev</div>
+        <div class="step-title">Добавь компоненты при необходимости</div>
       </div>
-      <p>Премиум UI-компоненты, которые делают сайт похожим на работу дизайн-агентства.</p>
+      <p>21st.dev содержит готовые UI-компоненты. Используй их точечно, когда они подходят задаче и стеку проекта.</p>
       <ol>
         <li>Перейди на <a href="https://21st.dev" target="_blank">21st.dev</a></li>
-        <li>Скопируй строку интеграции с их сайта</li>
-        <li>Вставь её в Claude Code и наблюдай за магией:</li>
+        <li>Выбери компонент и открой инструкцию установки</li>
+        <li>Передай команду Claude Code и попроси адаптировать компонент под DESIGN.md:</li>
       </ol>
       <div class="terminal">
         <div class="terminal-head">Claude Code</div>
-        <pre><span class="prompt">&gt;</span> [вставь строку интеграции с 21st.dev]</pre>
+        <pre><span class="prompt">&gt;</span> Установи выбранный компонент и приведи его к правилам из DESIGN.md. Сохрани адаптивность и доступность.</pre>
       </div>
     </div>
 
-    <p style="margin-top: 20px;"><b style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--accent-d); font-style:italic;">Готово. Твой профессиональный сайт собран.</b></p>
+    <p style="margin-top: 20px;"><b style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--accent-d); font-style:italic;">Рабочая среда готова. Теперь начинается проектирование сайта.</b></p>
+  </section>
+
+  <div class="ornament"><div class="ornament-mark">✦</div></div>
+
+  <section class="prose">
+    <div class="section-label">Сначала смысл</div>
+    <h2 class="section-title">Дай агенту <span class="accent">нормальный бриф</span></h2>
+    <p>Skill улучшает решения, но не придумывает бизнес-задачу вместо владельца. До дизайна зафиксируй 7 пунктов:</p>
+    <ul>
+      <li>Кто открывает сайт и с какой проблемой</li>
+      <li>Какое действие должен совершить посетитель</li>
+      <li>Что предлагается и чем подтверждается результат</li>
+      <li>Какие блоки обязательны</li>
+      <li>Какие тексты, фотографии и отзывы уже готовы</li>
+      <li>Какие сайты нравятся и что именно в них привлекает</li>
+      <li>Какие ограничения есть у бренда и технической платформы</li>
+    </ul>
+    <div class="terminal">
+      <div class="terminal-head">Промпт для структуры</div>
+      <pre><span class="prompt">&gt;</span> Прочитай бриф и материалы проекта. Сначала предложи структуру страницы: порядок блоков, задачу каждого блока и главное действие посетителя. Отдельно перечисли, каких данных не хватает. К коду переходи после моего подтверждения структуры.</pre>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Визуальная система</div>
+    <h2 class="section-title">Выбери стиль и добавь <span class="accent">DESIGN.md</span></h2>
+    <p><a href="https://styles.refero.design" target="_blank">Refero Styles</a> содержит более 2 000 примеров дизайн-систем. У каждого примера есть машинно-читаемый DESIGN.md с описанием цветов, типографики, отступов и компонентов.</p>
+    <ol style="margin: 14px 0 20px; padding-left: 22px;">
+      <li style="margin-bottom:8px;">Открой Refero Styles и выбери направление, подходящее аудитории и продукту.</li>
+      <li style="margin-bottom:8px;">Открой DESIGN.md выбранного примера и сохрани его в корень проекта.</li>
+      <li style="margin-bottom:8px;">Попроси агента проверить правила и показать, как они будут применены к странице.</li>
+    </ol>
+    <div class="tip">DESIGN.md служит ориентиром. Логотипы, тексты, изображения и уникальные элементы чужого бренда копировать не следует.</div>
+    <div class="terminal">
+      <div class="terminal-head">Главный промпт</div>
+      <pre><span class="prompt">&gt;</span> Прочитай DESIGN.md в корне проекта и используй его как правила дизайна. Собери [тип сайта] для [аудитория и задача]. Примени skill design-taste-frontend. Сначала покажи структуру страницы и визуальное направление. К коду переходи после моего подтверждения.</pre>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Первый проход</div>
+    <h2 class="section-title">Собери страницу и проверь <span class="accent">содержание</span></h2>
+    <p>После утверждения структуры агент собирает первую версию. На этом этапе проверь тексты, смысл блоков, ссылки, формы и отображение на телефоне. Декоративные эффекты пока отложи.</p>
+    <div class="terminal">
+      <div class="terminal-head">Промпт для сборки</div>
+      <pre><span class="prompt">&gt;</span> Структура утверждена. Собери первую рабочую версию по DESIGN.md. Используй реальные материалы проекта. Проверь мобильную версию, читаемость, ссылки, формы и состояния кнопок. Покажи результат и список решений, которые требуют моего подтверждения.</pre>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Проверка интерфейса</div>
+    <h2 class="section-title">Установи <span class="accent">Impeccable</span></h2>
+    <p>Impeccable — набор дизайн-проверок для coding-агентов. В репозитории заявлены 1 skill, 23 команды и 59 детерминированных правил для поиска типичных проблем интерфейсов.</p>
+    <div class="terminal">
+      <div class="terminal-head">Установка</div>
+      <pre><span class="prompt">$</span> npx impeccable install</pre>
+    </div>
+    <p>После установки перезапусти coding-агент и выполни инициализацию проекта:</p>
+    <div class="terminal">
+      <div class="terminal-head">Claude Code</div>
+      <pre><span class="prompt">&gt;</span> /impeccable init</pre>
+    </div>
+    <p><a href="https://github.com/pbakaus/impeccable" target="_blank">Открыть репозиторий Impeccable</a></p>
+    <p>Рабочий порядок:</p>
+    <div class="terminal">
+      <div class="terminal-head">Команды проверки</div>
+      <pre><span class="prompt">&gt;</span> /impeccable critique landing
+<span class="prompt">&gt;</span> /impeccable layout landing
+<span class="prompt">&gt;</span> /impeccable typeset landing
+<span class="prompt">&gt;</span> /impeccable audit landing
+<span class="prompt">&gt;</span> /impeccable polish landing</pre>
+    </div>
+    <ul>
+      <li><code>critique</code> оценивает иерархию, понятность и впечатление</li>
+      <li><code>layout</code> исправляет сетку, отступы и визуальный ритм</li>
+      <li><code>typeset</code> проверяет шрифты, размеры и иерархию текста</li>
+      <li><code>audit</code> ищет проблемы адаптивности, доступности и производительности</li>
+      <li><code>polish</code> выполняет финальную чистку перед публикацией</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Финальный слой</div>
+    <h2 class="section-title">Добавь <span class="accent">анимации</span> последними</h2>
+    <p>Навыки Emil Kowalski помогают выбрать места для движения, проверить уже созданные эффекты и подготовить план улучшений. Устанавливай их после готовой структуры, текста, адаптивной версии и проверки интерфейса.</p>
+    <div class="terminal">
+      <div class="terminal-head">Установка</div>
+      <pre><span class="prompt">$</span> npx skills@latest add emilkowalski/skills</pre>
+    </div>
+    <p><a href="https://github.com/emilkowalski/skills" target="_blank">Открыть репозиторий Skills for Designers and Engineers</a></p>
+    <div class="terminal">
+      <div class="terminal-head">Последовательность</div>
+      <pre><span class="prompt">&gt;</span> Используй find-animation-opportunities и найди элементы, которым движение поможет объяснить действие или состояние.
+
+<span class="prompt">&gt;</span> Используй improve-animations и составь приоритетный план улучшений.
+
+<span class="prompt">&gt;</span> Используй review-animations и проверь готовые эффекты, длительность, easing, производительность и prefers-reduced-motion.</pre>
+    </div>
+    <div class="tip">Установка навыка не гарантирует дорогой визуал автоматически. Результат зависит от брифа, выбранной системы, исходных материалов и качества проверки.</div>
+  </section>
+
+  <section class="prose">
+    <div class="section-label">Перед публикацией</div>
+    <h2 class="section-title">Финальная <span class="accent">проверка</span></h2>
+    <ul>
+      <li>Главная мысль понятна на первом экране</li>
+      <li>Кнопки ведут по правильным адресам</li>
+      <li>Формы отправляют данные и показывают результат</li>
+      <li>Страница читается на телефоне, планшете и компьютере</li>
+      <li>Текст не выходит за границы блоков</li>
+      <li>Изображения сжаты и имеют описания alt</li>
+      <li>Контраст текста достаточен для чтения</li>
+      <li>Анимации не мешают управлению и учитывают prefers-reduced-motion</li>
+      <li>В исходниках отсутствуют пароли, токены и персональные данные</li>
+      <li>Перед публикацией сохранена резервная копия или создан коммит Git</li>
+    </ul>
   </section>
 
   <div class="ornament"><div class="ornament-mark">✦</div></div>
 
   <section class="prose">
     <div class="section-label">Одним взглядом</div>
-    <h2 class="section-title">Краткий справочник</h2>
+    <h2 class="section-title">Правильный порядок</h2>
     <div class="summary">
       <div class="summary-row">
         <div class="summary-num">1</div>
         <div class="summary-content">
-          <b>Установи Claude Code</b>
-          <code>npm install -g @anthropic-ai/claude-code</code><br>
-          <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" style="color:var(--accent-d); font-size:12.5px;">docs.anthropic.com/en/docs/claude-code</a>
+          <b>Бриф и структура</b>
+          Аудитория, задача, материалы, блоки и главное действие
         </div>
       </div>
       <div class="summary-row">
         <div class="summary-num">2</div>
         <div class="summary-content">
-          <b>Установи Framer Motion</b>
-          <code>npm install framer-motion</code><br>
-          <a href="https://motion.dev/docs/react-quick-start" target="_blank" style="color:var(--accent-d); font-size:12.5px;">motion.dev/docs/react-quick-start</a>
+          <b>Визуальная система</b>
+          Выбери референс в Refero и положи DESIGN.md в корень проекта
         </div>
       </div>
       <div class="summary-row">
         <div class="summary-num">3</div>
         <div class="summary-content">
-          <b>Добавь навык UI UX Pro Max</b>
-          Скажи Claude Code установить его · скачай файл навыка
+          <b>Сборка с Taste Skill</b>
+          Подключи design-taste-frontend и собери первую рабочую версию
         </div>
       </div>
       <div class="summary-row">
         <div class="summary-num">4</div>
         <div class="summary-content">
-          <b>Добавь компоненты 21st.dev</b>
-          Вставь строку установки в Claude Code<br>
-          <a href="https://21st.dev" target="_blank" style="color:var(--accent-d); font-size:12.5px;">21st.dev</a>
+          <b>Проверка и анимации</b>
+          Impeccable: critique → layout → typeset → audit → polish. Затем навыки Emil Kowalski
         </div>
       </div>
     </div>
@@ -526,15 +641,15 @@ h2.section-title .accent { color: var(--accent-d); font-style: italic; }
 
   <section class="prose">
     <div class="section-label">Что важно помнить</div>
-    <h2 class="section-title">Это <span class="accent">старт</span>, а не конечная точка</h2>
-    <p>После установки у тебя будет рабочий скелет сайта. Дальше нужно наполнять содержимым, ставить свои цвета и шрифты, придумывать структуру. ИИ помогает с технической частью — стратегию и смысл ты придумываешь сам.</p>
-    <p>Если что-то на первом шаге не заводится — обычно дело в Node.js. Установи с nodejs.org (LTS-версию), перезапусти терминал и повтори.</p>
+    <h2 class="section-title">Skills усиливают <span class="accent">процесс</span></h2>
+    <p>Дорогой визуал рождается из точной задачи, сильных материалов, выбранной дизайн-системы и нескольких циклов проверки. Skills помогают агенту соблюдать правила и замечать ошибки, но решение о смысле, бренде и публикации остаётся за владельцем проекта.</p>
+    <p>Команды и способы установки со временем меняются. Перед запуском сверяйся с README каждого репозитория и официальной документацией Claude Code.</p>
   </section>
 
   <div class="cta-channel">
     <div class="kicker">Больше практики с ИИ</div>
     <h3>Каждый день — новый инструмент</h3>
-    <p>В моём канале — промпты и гайды, которые реально работают.<br>Без «нейросети изменят мир», без воды.</p>
+    <p>В моём канале — промпты, разборы, инструменты и рабочие примеры внедрения ИИ.</p>
     <a class="cta-btn" href="https://t.me/BiznesvAi" target="_blank">Открыть @BiznesvAi</a>
   </div>
 
