@@ -49,7 +49,9 @@
     .sequence{padding:32px;background:#ead9b8;border:1px solid rgba(73,49,22,.2)}.sequence h3{margin:0 0 12px;color:var(--brown);font:600 31px "Cormorant Garamond",Georgia,serif}.sequence p{margin:0 0 14px}.sequence code{display:block;padding:16px 18px;background:rgba(255,255,255,.5);color:#4a3217;white-space:normal;font:13px/1.65 Manrope,Arial,sans-serif}
     .cta{position:relative;overflow:hidden;text-align:center;padding:72px 34px;background:var(--night);color:var(--cream);border:1px solid rgba(198,155,73,.45)}.cta:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle,rgba(198,155,73,.18),transparent 50%);pointer-events:none}.cta>*{position:relative}
     .cta h2{max-width:680px;margin:0 auto 18px;color:var(--cream);font:600 clamp(40px,6vw,65px)/.95 "Cormorant Garamond",Georgia,serif}.cta p{max-width:660px;margin:0 auto 26px;color:rgba(255,250,240,.7)}
+    .cta-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
     .btn{display:inline-block;padding:15px 22px;border:1px solid var(--gold);background:var(--gold);color:#1c140a;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .btn.secondary{background:transparent;color:var(--cream)}
     .footer{text-align:center;padding:44px 20px;background:#080706;color:rgba(255,250,240,.58);font-size:12px}.footer b{display:block;color:var(--gold-2);font:600 34px "Cormorant Garamond",Georgia,serif}.footer a{color:var(--gold-2)}
     .reveal{opacity:1;transform:none}.has-js .reveal{opacity:0;transform:translateY(16px);transition:.65s ease}.has-js .reveal.visible{opacity:1;transform:none}
     @media(max-width:760px){.hero{grid-template-columns:1fr;min-height:auto}.hero-copy{padding:52px 22px 36px}.hero h1{font-size:64px}.hero-photo{min-height:540px}.hero-photo:after{background:linear-gradient(180deg,var(--night),transparent 20%),linear-gradient(0deg,var(--night),transparent 24%)}.author-seal{right:18px;bottom:22px}.wrap{padding:64px 17px}.section{margin-bottom:62px}.start-grid{grid-template-columns:1fr}.prompt-head{grid-template-columns:54px 1fr}.prompt-text{padding:19px;font-size:13px}.copy{width:calc(100% - 38px);margin:0 19px 19px}.cta{padding:54px 20px}}
@@ -85,7 +87,7 @@
     .prompt-title{padding:2px 0 18px 20px}.prompt-title b{font-size:29px;color:#3e2a14}.prompt-title span{color:#7b684f;font-size:12px}
     .prompt-text{padding:20px;background:#f7efe0;border:1px solid rgba(176,136,56,.22);font-size:13px;color:#392915}
     .copy{margin:15px 0 0;width:100%;border-color:#b08838}
-    .cta{text-align:center;padding:38px 28px}.cta:before{display:none}.cta h2{color:#3e2a14;font-size:44px}.cta p{color:#7b684f}.btn{background:transparent;color:#3e2a14;border-color:#b08838}.btn:hover{background:#3e2a14;color:#fffaf0;border-color:#3e2a14}
+    .cta{text-align:center;padding:38px 28px}.cta:before{display:none}.cta h2{color:#3e2a14;font-size:44px}.cta p{color:#7b684f}.btn{background:#3e2a14;color:#fffaf0;border-color:#3e2a14}.btn.secondary{background:transparent;color:#3e2a14;border-color:#b08838}.btn:hover,.btn.secondary:hover{background:#8b6a22;color:#fffaf0;border-color:#8b6a22}
     .footer{margin-top:58px;padding:33px 0 0;background:transparent;border-top:1px solid rgba(62,42,20,.16);color:#7b684f}.footer b{font:44px/1 "Marck Script","Segoe Script",cursive;color:#3e2a14}.footer a{color:#3e2a14}
     @media(max-width:620px){.page{padding:34px 17px 74px}.mast{font-size:8px;letter-spacing:.14em}.author{grid-template-columns:118px 1fr;gap:15px;margin:32px 0 42px}.author img{width:118px;height:155px}.author-name{font-size:31px}.hero h1{font-size:51px}.lead{font-size:18px}.start-grid{grid-template-columns:1fr}.prompt-card{padding:30px 18px 20px}.prompt-head{grid-template-columns:42px 1fr}.prompt-title{padding-left:14px}.prompt-title b{font-size:24px}.prompt-text{font-size:12px;padding:16px}.sequence,.cta{padding:24px 20px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1!important;transform:none!important;transition:none!important}}
@@ -262,7 +264,10 @@
         <div class="eyebrow" style="color:var(--gold-2)">Продолжение практики</div>
         <h2>ИИ приносит пользу, когда знает вашу задачу и контекст</h2>
         <p>В канале «Бизнес и Нейросети» я показываю рабочие промпты, инструменты, разборы и способы встроить ИИ в контент, продажи и ежедневные процессы.</p>
-        <a class="btn" href="https://t.me/BiznesvAi" target="_blank" rel="noopener">Перейти в Telegram-канал</a>
+        <div class="cta-actions">
+          <a class="btn" href="https://t.me/BiznesvAi/264" target="_blank" rel="noopener">Открыть пост с гайдом</a>
+          <a class="btn secondary" href="https://t.me/BiznesvAi" target="_blank" rel="noopener">Перейти в Telegram-канал</a>
+        </div>
       </section>
 
   <footer class="footer"><div class="author-role">Автор практического руководства</div><b>Ольга</b><br><a href="https://t.me/BiznesvAi">@BiznesvAi</a></footer>
